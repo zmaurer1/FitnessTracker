@@ -1,5 +1,6 @@
 async function initWorkout() {
   const lastWorkout = await API.getLastWorkout();
+  const createWorkout = await API.createWorkout()
   console.log("Last workout:", lastWorkout);
   if (lastWorkout) {
     document
@@ -14,6 +15,9 @@ async function initWorkout() {
     };
 
     renderWorkoutSummary(workoutSummary);
+  } else if(!lastWorkout) {
+    createWorkout;
+    console.log(createWorkout._id)
   } else {
     renderNoWorkoutText()
   }
